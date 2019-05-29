@@ -10,10 +10,14 @@ const OpacityBehaviour = styled.div`
   opacity: ${props => (props.active ? 1 : 0)};
 `
 
-class Fragment extends Component {
+const clamp = (index, min, max) => {
+  return Math.min(Math.max(index, min), max)
+}
+
+class ControlledFragment extends Component {
   static propTypes = {
     behaviour: PropTypes.any,
-    index: PropTypes.number,
+    numberOfSteps: PropTypes.number,
     manager: PropTypes.object.isRequired
   }
 
@@ -23,7 +27,9 @@ class Fragment extends Component {
 
   constructor(props) {
     super(props)
-    this._instance = props.manager.registerFragment({ index: props.index })
+    this._instance = props.manager.registerControlledFragment(
+      Array(props.numberOfSteps).fill('')
+    )
   }
 
   componentWillUnmount() {
@@ -31,18 +37,18 @@ class Fragment extends Component {
   }
 
   render() {
-    const { manager, behaviour, ...restProps } = this.props
-    const Behaviour = behaviour
+    const { manager } = this.props
 
-    const isActive = manager.isIndexActive(this._instance.index)
-    return <Behaviour {...restProps} active={isActive} />
+    return this.props.children(
+      clamp(manager.state.index, -Infinity, this.props.numberOfSteps - 1)
+    )
   }
 }
 
-const FragmentConnected = props => (
+const ControlledFragmentConnected = props => (
   <Manager.Consumer>
-    {args => <Fragment {...props} manager={args.manager} />}
+    {args => <ControlledFragment {...props} manager={args.manager} />}
   </Manager.Consumer>
 )
 
-export default FragmentConnected
+export default ControlledFragmentConnected

@@ -8,7 +8,7 @@
   "license": "MIT",
   "scripts": {
     "build": "babel src --out-dir lib",
-    "dev": "parcel demo/index.html --open",
+    "dev": "parcel watch demo/index.html --open",
     "precommit": "lint-staged"
   },
   "peerDependencies": {
@@ -38,13 +38,18 @@
     "react-dom": "^16.3.0",
     "react-syntax-highlighter": "^7.0.2",
     "react-test-renderer": "^16.3.0",
-    "styled-components": "^3.2.3"
+    "styled-components": "^2.2.4"
   },
   "dependencies": {
+    "code-surfer": "^0.5.5",
     "create-react-context": "^0.2.1",
-    "get-youtube-id": "^1.0.0"
+    "get-youtube-id": "^1.0.0",
+    "raw-loader": "^2.0.0"
   },
   "lint-staged": {
-    "*.{js,json,css,md}": ["prettier --write", "git add"]
+    "*.{js,json,css,md}": [
+      "prettier --write",
+      "git add"
+    ]
   }
 }

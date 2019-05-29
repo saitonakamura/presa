@@ -12,12 +12,15 @@ class FragmentManager extends Component {
 
   static propTypes = {
     children: PropTypes.any,
-    initialIndex: PropTypes.number
+    initialIndex: PropTypes.number,
+    isIndexActive: PropTypes.func
   }
 
   // by default all fragments are activated
   static defaultProps = {
-    initialIndex: ALL_FRAGMENTS
+    initialIndex: ALL_FRAGMENTS,
+    isIndexActive: (fragmentIndex, currentActiveIndex) =>
+      fragmentIndex <= currentActiveIndex
   }
 
   constructor(props) {
@@ -55,7 +58,7 @@ class FragmentManager extends Component {
   }
 
   isIndexActive(index) {
-    return index <= this.state.index
+    return this.props.isIndexActive(index, this.state.index)
   }
 
   registerFragment(options = {}) {
@@ -77,10 +80,22 @@ class FragmentManager extends Component {
     return registered
   }
 
+  registerControlledFragment(steps = []) {
+    const fragmentId = Symbol()
+    const registered = steps.map((_, index) => ({
+      id: fragmentId,
+      index: index,
+      unregister: () => this.unregisterFragment(fragmentId)
+    }))
+
+    Array.prototype.splice.apply(this._fragments, [0, 0, ...registered])
+
+    return registered[0]
+  }
+
   unregisterFragment(id) {
     // remove the fragment reference from the list
-    const idx = this._fragments.findIndex(f => f.id === id)
-    idx && this._fragments.splice(idx, 1)
+    this._fragments = this._fragments.filter(f => f.id !== id)
   }
 
   render() {

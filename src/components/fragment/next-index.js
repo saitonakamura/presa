@@ -9,7 +9,7 @@
  * Returns `null` if the index is out of bounds.
  */
 const nextIndex = (variants, current, shift = 1) => {
-  const sorted = unique(variants).sort()
+  const sorted = unique(variants).sort((a, b) => a - b)
   const closest = closestIndex(sorted, current, shift > 0)
 
   if (closest === null) {

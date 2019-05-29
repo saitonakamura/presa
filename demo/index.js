@@ -1,20 +1,75 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import styled, { injectGlobal } from 'styled-components'
+import CodeSurfer from 'code-surfer'
 
 import { Presentation, Slide } from '../src'
-import { H1, H2, H3, H4, Code } from '../src/blocks'
+import { H1, H3, Code } from '../src/blocks'
 import VideoBackground from '../src/blocks/video-background'
 
 import { Presa } from '../src/assets/icons'
-import SidebarLayout from './sidebar-layout'
-import GithubButton from './github-button'
+import SidebarLayout from './components/sidebar-layout'
+import GithubButton from './components/github-button'
+import RegularFragment, { ControlledFragment } from '../src/components/fragment'
+
+import IntroSlide from './slides/intro'
 
 const baseTextColor = '#444'
 const primaryColor = '#3c59ff'
 
+const Hideable = props => {
+  return props.active ? props.children(props.index) : null
+}
+const Fragment = props => <RegularFragment {...props} behaviour={Hideable} />
+
+const code = `const looper = fn => {
+      let cb = (time) => {
+        requestAnimationFrame(cb)
+        let diff = ~~(time - (cb.time || 0)),
+          seconds_passed = diff/1000
+        fn(seconds_passed)
+        cb.time = time
+      }
+      return cb
+    }
+     const looper = fn => {
+      let cb = (time) => {
+        requestAnimationFrame(cb)
+        let diff = ~~(time - (cb.time || 0)),
+          seconds_passed = diff/1000
+        fn(seconds_passed)
+        cb.time = time
+      }
+      return cb
+    }
+     `
+
+const CustomCode = props => {
+  const { lines = [] } = props
+  const step = lines.length ? { lines } : {}
+
+  return (
+    <CodeWrapper>
+      <CodeSurfer lang="javascript" showNumbers code={code} step={step} />
+    </CodeWrapper>
+  )
+}
+
 const PitchDeck = () => (
-  <Presentation name="Presa pitch deck" theme={{ textColor: baseTextColor }}>
+  <Presentation
+    name="Presa pitch deck"
+    tableOfContents
+    useFullscreenAPI
+    theme={{ textColor: baseTextColor }}
+  >
+    <IntroSlide />
+
+    <Slide name="Durex heart" layout={ImageLayout}>
+      <ImageBackground backgroundColor="black">
+        <img src={require('./images/gifs/heart.gif')} alt="heart" />
+      </ImageBackground>
+    </Slide>
+
     <Slide
       name="What is Presa?"
       layout={children => (
@@ -27,8 +82,8 @@ const PitchDeck = () => (
     >
       <PresaTitle>Presa</PresaTitle>
       <PresaSlogan>
-        Create slides in <b>React</b>, present with joy! <br />Built with
-        styled-components 💅
+        Create slides in <b>React</b>, present with joy! <br />
+        Built with styled-components 💅
       </PresaSlogan>
 
       <p>
@@ -46,7 +101,59 @@ const PitchDeck = () => (
         controls below.
       </Footnote>
     </Slide>
+    <Slide name="Fragment demo">
+      <Fragment index={0}>{index => `text ${index}`}</Fragment>
+      <Fragment index={1}>{index => `text ${index}`}</Fragment>
+      <Fragment index={2}>{index => `text ${index}`}</Fragment>
+    </Slide>
+    <Slide name="Controlled fragment demo">
+      <ControlledFragment numberOfSteps={5}>
+        {currentIndex => {
+          const lineMap = {
+            0: [1, 2],
+            1: [3, 4],
+            2: [5, 6],
+            3: [6],
+            4: [14, 15, 16, 17, 18, 19, 20]
+          }
 
+          return (
+            <CodeSlide>
+              <H3> Example how to loop by RAF</H3>
+
+              <CustomCode lines={lineMap[currentIndex]} />
+
+              <p>
+                Presa is lightweight, declarative and modular. Each slide is a
+                React component: only rendered when visible.
+              </p>
+            </CodeSlide>
+          )
+        }}
+      </ControlledFragment>
+    </Slide>
+
+    <Slide name="Native code from presa">
+      <Code>{`
+      ${code}
+      const redraw = _ => {
+  points.forEach(point => {
+
+    // make sure \\\`will-change: transform\\\` is set
+    point.element.style.transform = \\\`
+      translate3d($\\{point.x}px, $\\{point.y}px, 0.0px)
+      rotate($\\{point.angle}rad)\\\`
+  })
+}
+
+const tick = ts => {
+  _lastRaf = requestAnimationFrame(tick)
+
+  physicsStep(delta)
+  redraw(delta)
+}\`
+      `}</Code>
+    </Slide>
     <Slide name="Installing Presa" fade={0.2} centered>
       <Numbered number={1}>
         <H1>Quick Start</H1>
@@ -54,8 +161,8 @@ const PitchDeck = () => (
 
         <Description>
           Install Presa in your project by running{' '}
-          <InlineCode>yarn add presa</InlineCode> command.<br /> You'll need to
-          install <InlineCode>react</InlineCode> and{' '}
+          <InlineCode>yarn add presa</InlineCode> command.
+          <br /> You'll need to install <InlineCode>react</InlineCode> and{' '}
           <InlineCode>styled-components</InlineCode> as well.
         </Description>
       </Numbered>
@@ -246,6 +353,19 @@ const StarOnGithub = styled.div`
   margin-bottom: 90px;
 `
 
+const CodeSlide = styled.div`
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+`
+const CodeWrapper = styled.div`
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  margin: 40px 0 20px 0;
+`
+
 const Description = styled.p`
   margin: 40px 0;
   text-align: left;
@@ -267,6 +387,18 @@ const PresaIcon = styled(Presa)`
   height: 40px;
 `
 
+const ImageLayout = children => <ImageCentred>{children}</ImageCentred>
+
+const ImageCentred = styled.div`
+  display: flex;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+`
+
+const ImageBackground = styled(ImageCentred)`
+  background-color: ${props => props.backgroundColor};
+`
 // to prevent additional scrollbars
 injectGlobal`
   body {

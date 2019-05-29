@@ -1,6 +1,4 @@
 import React from 'react'
-import ReactDOM from 'react-dom'
-
 import styled from 'styled-components'
 
 const SidebarLayout = props => {
@@ -9,8 +7,8 @@ const SidebarLayout = props => {
 
   const isRight = props.position === 'right'
 
-  const leftRatio = 100.0 * left / (left + right)
-  const rightRatio = 100.0 * left / (left + right)
+  const leftRatio = (100.0 * left) / (left + right)
+  const rightRatio = (100.0 * left) / (left + right)
 
   return (
     <Container>
