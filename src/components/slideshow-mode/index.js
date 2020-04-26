@@ -11,7 +11,7 @@ class SlideshowMode extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      viewportWidth: props.slideWidth
+      viewportWidth: props.slideWidth,
     }
   }
 
@@ -22,7 +22,7 @@ class SlideshowMode extends React.Component {
       const value = limitBy(width, original * 0.5, original)
 
       this.setState({
-        viewportWidth: value
+        viewportWidth: value,
       })
     }
   }
@@ -50,7 +50,7 @@ class SlideshowMode extends React.Component {
         {showToc && <TocColumn {...this.props} />}
 
         <Main>
-          <CurrentSlide innerRef={el => (this._slideCont = el)}>
+          <CurrentSlide ref={(el) => (this._slideCont = el)}>
             <SlideCard
               key={slide.index}
               slide={slide}

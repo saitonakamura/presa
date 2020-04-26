@@ -41,7 +41,7 @@ class Toc extends React.Component {
           <Copyright />
         </Header>
 
-        <TableOfContents innerRef={el => (this._tocEl = el)}>
+        <TableOfContents ref={(el) => (this._tocEl = el)}>
           {slides.map((slide, index) => (
             <SlideItem
               key={index}
@@ -72,7 +72,7 @@ const SlideArrow = styled(({ isVisible, ...rest }) => <RightArrow {...rest} />)`
   opacity: 0;
   left: -6px;
 
-  ${props =>
+  ${(props) =>
     props.isVisible &&
     `
     opacity: 1;
@@ -124,14 +124,14 @@ const SlideItem = styled.div`
     color: #222;
   }
 
-  ${props =>
+  ${(props) =>
     props.current &&
     `
     color: black;
     padding-left: 18px;
-  `} ${props =>
-      props.future &&
-      `
+  `} ${(props) =>
+    props.future &&
+    `
     opacity: 0.4;
   `};
 `

@@ -8,13 +8,13 @@ const PlainLayout = styled.div`
   height: 100%;
 `
 
-const DefaultLayout = PlainLayout.extend`
-  padding: ${props => props.theme.slide.layoutPadding};
+const DefaultLayout = styled(PlainLayout)`
+  padding: ${(props) => props.theme.slide.layoutPadding};
 `
 
 // A slide layout centered both
 // vertically and horizontally
-const CenteredLayout = DefaultLayout.extend`
+const CenteredLayout = styled(DefaultLayout)`
   display: flex;
   flex-direction: column;
   justify-content: center;

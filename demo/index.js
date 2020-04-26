@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import styled, { injectGlobal } from 'styled-components'
-import CodeSurfer from 'code-surfer'
+import styled, { createGlobalStyle } from 'styled-components'
+// import CodeSurfer from 'code-surfer'
 
 import { Presentation, Slide } from '../src'
 import { H1, H3, Code } from '../src/blocks'
@@ -17,10 +17,10 @@ import IntroSlide from './slides/intro'
 const baseTextColor = '#444'
 const primaryColor = '#3c59ff'
 
-const Hideable = props => {
+const Hideable = (props) => {
   return props.active ? props.children(props.index) : null
 }
-const Fragment = props => <RegularFragment {...props} behaviour={Hideable} />
+const Fragment = (props) => <RegularFragment {...props} behaviour={Hideable} />
 
 const code = `const looper = fn => {
       let cb = (time) => {
@@ -44,16 +44,16 @@ const code = `const looper = fn => {
     }
      `
 
-const CustomCode = props => {
-  const { lines = [] } = props
-  const step = lines.length ? { lines } : {}
+// const CustomCode = props => {
+//   const { lines = [] } = props
+//   const step = lines.length ? { lines } : {}
 
-  return (
-    <CodeWrapper>
-      <CodeSurfer lang="javascript" showNumbers code={code} step={step} />
-    </CodeWrapper>
-  )
-}
+//   return (
+//     <CodeWrapper>
+//       <CodeSurfer lang="javascript" showNumbers code={code} step={step} />
+//     </CodeWrapper>
+//   )
+// }
 
 const PitchDeck = () => (
   <Presentation
@@ -72,7 +72,7 @@ const PitchDeck = () => (
 
     <Slide
       name="What is Presa?"
-      layout={children => (
+      layout={(children) => (
         <SidebarLayout
           src={require('./images/conference.jpg')}
           proportion="6/9"
@@ -102,11 +102,11 @@ const PitchDeck = () => (
       </Footnote>
     </Slide>
     <Slide name="Fragment demo">
-      <Fragment index={0}>{index => `text ${index}`}</Fragment>
-      <Fragment index={1}>{index => `text ${index}`}</Fragment>
-      <Fragment index={2}>{index => `text ${index}`}</Fragment>
+      <Fragment index={0}>{(index) => `text ${index}`}</Fragment>
+      <Fragment index={1}>{(index) => `text ${index}`}</Fragment>
+      <Fragment index={2}>{(index) => `text ${index}`}</Fragment>
     </Slide>
-    <Slide name="Controlled fragment demo">
+    {/* <Slide name="Controlled fragment demo">
       <ControlledFragment numberOfSteps={5}>
         {currentIndex => {
           const lineMap = {
@@ -131,7 +131,7 @@ const PitchDeck = () => (
           )
         }}
       </ControlledFragment>
-    </Slide>
+    </Slide> */}
 
     <Slide name="Native code from presa">
       <Code>{`
@@ -244,7 +244,7 @@ import { VideoBackground } from 'presa/blocks'
     <Slide
       name="Blocks"
       fade={0.3}
-      layout={children => (
+      layout={(children) => (
         <SidebarLayout
           src={require('./images/stairs.jpg')}
           proportion="2/3"
@@ -291,6 +291,7 @@ import { VideoBackground } from 'presa/blocks'
         https://github.com/molefrog/presa
       </a>
     </Slide>
+    <GlobalStyle />
   </Presentation>
 )
 
@@ -305,27 +306,27 @@ const NumberedNumber = styled.div`
   justify-content: center;
   margin: 10px 0;
 
-  color: ${props => props.color};
-  border: 3px solid ${props => props.color};
+  color: ${(props) => props.color};
+  border: 3px solid ${(props) => props.color};
   text-shadow: none;
 `
 
 const NumberedCont = styled.div`
   display: flex;
   flex-flow: column;
-  align-items: ${props => (props.centered ? 'center' : 'flex-start')};
-  text-align: ${props => (props.centered ? 'center' : 'left')};
+  align-items: ${(props) => (props.centered ? 'center' : 'flex-start')};
+  text-align: ${(props) => (props.centered ? 'center' : 'left')};
 
   padding-bottom: 100px;
 
-  ${props =>
+  ${(props) =>
     props.inverse &&
     `
     color: white;
     text-shadow: 1px 2px rgba(0,0,0,0.6);`};
 `
 
-const Numbered = props => (
+const Numbered = (props) => (
   <NumberedCont centered={props.centered} inverse={props.inverse}>
     <NumberedNumber color={props.inverse ? 'white' : primaryColor}>
       {props.number}
@@ -387,7 +388,7 @@ const PresaIcon = styled(Presa)`
   height: 40px;
 `
 
-const ImageLayout = children => <ImageCentred>{children}</ImageCentred>
+const ImageLayout = (children) => <ImageCentred>{children}</ImageCentred>
 
 const ImageCentred = styled.div`
   display: flex;
@@ -397,10 +398,10 @@ const ImageCentred = styled.div`
 `
 
 const ImageBackground = styled(ImageCentred)`
-  background-color: ${props => props.backgroundColor};
+  background-color: ${(props) => props.backgroundColor};
 `
 // to prevent additional scrollbars
-injectGlobal`
+const GlobalStyle = createGlobalStyle`
   body {
     margin: 0;
     padding: 0;

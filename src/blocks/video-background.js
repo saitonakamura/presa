@@ -10,7 +10,7 @@ import { BaseBackground as BaseBg } from '../components/slide/background'
 // { foo: true } => foo=1
 export const makeQuery = (options = {}) => {
   return Object.entries(options)
-    .map(pair => {
+    .map((pair) => {
       let [k, v] = pair
       if (typeof v === 'boolean') v = Number(v)
 
@@ -26,14 +26,14 @@ class VideoBackground extends React.Component {
     autoPlay: PropTypes.bool,
     controls: PropTypes.bool,
     loop: PropTypes.bool,
-    mute: PropTypes.bool
+    mute: PropTypes.bool,
   }
 
   static defaultProps = {
     autoPlay: true,
     controls: false,
     loop: true,
-    mute: false
+    mute: false,
   }
 
   renderYouTube(videoId) {
@@ -45,7 +45,7 @@ class VideoBackground extends React.Component {
       showinfo: false,
       controls,
       loop,
-      mute
+      mute,
     })
 
     const videoSrc = `${baseUrl}${videoId}?${query}`
@@ -65,7 +65,7 @@ class VideoBackground extends React.Component {
   }
 }
 
-const IFrame = BaseBg.withComponent('iframe').extend`
+const IFrame = styled(BaseBg.withComponent('iframe'))`
   border: none;
 
   // when video is being loaded

@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 
-export const backgroundFor = props => {
+export const backgroundFor = (props) => {
   const { background, fade } = props
   const ownProps = { background, fade }
 
@@ -42,14 +42,14 @@ export const BaseBackground = styled.div`
   height: 100%;
 `
 
-export const PlainBackground = BaseBackground.extend`
-  ${props => props.raw && `background: ${props.raw}`};
+export const PlainBackground = styled(BaseBackground)`
+  ${(props) => props.raw && `background: ${props.raw}`};
 
   /*
     This linear gradient hack makes it possible to
     use an overlay together with the background image.
   */
-  ${props =>
+  ${(props) =>
     props.image &&
     `background: linear-gradient(
       rgba(0, 0, 0, ${props.fade || 0.0}),

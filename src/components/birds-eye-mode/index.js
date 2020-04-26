@@ -10,20 +10,20 @@ class NavigationMode extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      isSlideLoaded: {}
+      isSlideLoaded: {},
     }
   }
 
   loadSlide = (index, loaded = true) => {
-    this.setState(state => ({
+    this.setState((state) => ({
       isSlideLoaded: {
         ...state.isSlideLoaded,
-        [String(index)]: loaded
-      }
+        [String(index)]: loaded,
+      },
     }))
   }
 
-  handleSlideClick = index => {
+  handleSlideClick = (index) => {
     this.props.switchSlide(index)
     this.props.toggleBirdsEye()
   }
@@ -32,10 +32,10 @@ class NavigationMode extends React.Component {
     // Get the list of slides ids that are
     // currently visible within the viewport.
     const visible = entries
-      .filter(entry => entry.isIntersecting)
-      .map(entry => entry.target.dataset.slideId)
+      .filter((entry) => entry.isIntersecting)
+      .map((entry) => entry.target.dataset.slideId)
 
-    visible.forEach(id => this.loadSlide(id))
+    visible.forEach((id) => this.loadSlide(id))
   }
 
   componentDidMount() {
@@ -49,13 +49,13 @@ class NavigationMode extends React.Component {
     }
 
     const options = {
-      threshold: 0.5
+      threshold: 0.5,
     }
 
     this._observer = new IntersectionObserver(this.handleIntersection, options)
 
     // Fire observer up for slide items
-    ;[].forEach.call(this._root.querySelectorAll('[data-slide-id]'), el =>
+    ;[].forEach.call(this._root.querySelectorAll('[data-slide-id]'), (el) =>
       this._observer.observe(el)
     )
   }
@@ -73,7 +73,7 @@ class NavigationMode extends React.Component {
     const { slides, currentSlide } = this.props
 
     return (
-      <Container innerRef={el => (this._root = el)}>
+      <Container ref={(el) => (this._root = el)}>
         <Grid>
           {slides.map((slide, index) => {
             const isLoaded = !!this.state.isSlideLoaded[index.toString()]
@@ -103,7 +103,7 @@ class NavigationMode extends React.Component {
 }
 
 const SlideName = styled.div`
-  color: ${props => props.theme.darkGrayColor};
+  color: ${(props) => props.theme.darkGrayColor};
   text-align: center;
   padding: 0px 10px;
   margin-top: 10px;
@@ -123,10 +123,10 @@ const SlideCard = styled(Slide)`
   cursor: pointer;
   box-shadow: 0px 0px 1px 0px rgba(0, 0, 0, 0.15),
     0px 1px 6px 0px rgba(0, 0, 0, 0.03)
-      ${props =>
+      ${(props) =>
         props.isCurrent &&
         css`
-      , 0px 0px 0px 4px ${props => props.theme.primaryColor};
+      , 0px 0px 0px 4px ${(props) => props.theme.primaryColor};
     `};
 `
 

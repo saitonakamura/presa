@@ -3,7 +3,7 @@ import styled from 'styled-components'
 // Don't style anything after h3
 const maxHeading = 3
 
-const calcFontSize = props => {
+const calcFontSize = (props) => {
   const scale = props.theme.slide.fontScale || 1.0
   const level = props.level || 0
 
@@ -16,14 +16,14 @@ const calcFontSize = props => {
 
 export const Header = styled.h1`
   font-size: ${calcFontSize};
-  font-weight: ${props => props.weight};
-  color: ${props => props.color};
+  font-weight: ${(props) => props.weight};
+  color: ${(props) => props.color};
   line-height: 1.2;
   margin: 0.2em 0;
 `
 
 export const makeHeader = (tag, level, weight) =>
-  Header.withComponent(tag).extend.attrs({ level, weight })``
+  styled(Header.withComponent(tag)).attrs({ level, weight })``
 
 // Header components
 export const H1 = makeHeader('h1', 1, 'bold')
