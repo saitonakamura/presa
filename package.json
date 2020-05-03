@@ -32,10 +32,12 @@
     "husky": "^0.14.3",
     "jest": "^22.4.3",
     "lint-staged": "^7.0.0",
+    "parcel-bundler": "^1.12.4",
     "prettier": "^2.0.5",
     "prop-types": "^15.6.1",
     "react": "^16.3.0",
     "react-dom": "^16.3.0",
+    "react-is": "^16.13.1",
     "react-syntax-highlighter": "^7.0.2",
     "react-test-renderer": "^16.3.0",
     "styled-components": "^5.1.0",
@@ -43,9 +45,7 @@
   },
   "dependencies": {
     "create-react-context": "^0.2.1",
-    "get-youtube-id": "^1.0.0",
-    "parcel-bundler": "^1.12.4",
-    "raw-loader": "^2.0.0"
+    "get-youtube-id": "^1.0.0"
   },
   "lint-staged": {
     "*.{js,json,css,md}": [
