@@ -1,11 +1,10 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import createReactContext from 'create-react-context'
 
 import { ALL_FRAGMENTS, NO_FRAGMENTS } from './constants'
 import nextIndex from './next-index'
 
-const Context = createReactContext()
+const Context = React.createContext({ manager: null })
 
 class FragmentManager extends Component {
   static Consumer = Context.Consumer
@@ -13,14 +12,14 @@ class FragmentManager extends Component {
   static propTypes = {
     children: PropTypes.any,
     initialIndex: PropTypes.number,
-    isIndexActive: PropTypes.func
+    isIndexActive: PropTypes.func,
   }
 
   // by default all fragments are activated
   static defaultProps = {
     initialIndex: ALL_FRAGMENTS,
     isIndexActive: (fragmentIndex, currentActiveIndex) =>
-      fragmentIndex <= currentActiveIndex
+      fragmentIndex <= currentActiveIndex,
   }
 
   constructor(props) {
@@ -33,7 +32,7 @@ class FragmentManager extends Component {
   }
 
   navigate(shift = 1) {
-    const indexes = this._fragments.map(f => f.index)
+    const indexes = this._fragments.map((f) => f.index)
 
     // no fragments found, skip
     if (!indexes.length) {
@@ -73,7 +72,7 @@ class FragmentManager extends Component {
     const registered = {
       id: fragmentId,
       index: index,
-      unregister: () => this.unregisterFragment(fragmentId)
+      unregister: () => this.unregisterFragment(fragmentId),
     }
 
     this._fragments.push(registered)
@@ -85,7 +84,7 @@ class FragmentManager extends Component {
     const registered = steps.map((_, index) => ({
       id: fragmentId,
       index: index,
-      unregister: () => this.unregisterFragment(fragmentId)
+      unregister: () => this.unregisterFragment(fragmentId),
     }))
 
     Array.prototype.splice.apply(this._fragments, [0, 0, ...registered])
@@ -95,7 +94,7 @@ class FragmentManager extends Component {
 
   unregisterFragment(id) {
     // remove the fragment reference from the list
-    this._fragments = this._fragments.filter(f => f.id !== id)
+    this._fragments = this._fragments.filter((f) => f.id !== id)
   }
 
   render() {
