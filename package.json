@@ -1,6 +1,6 @@
 {
   "name": "@saitonakamura/presa",
-  "version": "1.1.5",
+  "version": "1.1.6",
   "description": "Stylish React presentation framework.",
   "main": "lib/index.js",
   "repository": "https://github.com/molefrog/presa.git",
@@ -12,8 +12,8 @@
     "precommit": "lint-staged"
   },
   "peerDependencies": {
-    "react": "^15.0.0 || ^16.0.0",
-    "styled-components": "^2.0.0"
+    "react": "^16.8.0",
+    "styled-components": "^5.0.0"
   },
   "devDependencies": {
     "@types/styled-components": "^5.1.0",
