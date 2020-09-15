@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="f19faea0-96ff-42e8-9f28-b240bb44ea83" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/bending/EmitingValidatorSlides.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bending/ReadingTypesSlides.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bending/TypeDirectedEmitCodeSlides.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bending/WrappingValidatorCodeSlides.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bending/CodeSurferSlide.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/bending/CodeSurferSlide.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bending/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/bending/index.tsx" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1hzZoiIjXOWtW1dsa1gRR3g0FF1" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/bending" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="nodejs_package_manager_path" value="yarn" />
+    <property name="prettierjs.PrettierConfiguration.Package" value="$PROJECT_DIR$/node_modules/prettier" />
+    <property name="settings.editor.selected.configurable" value="settings.javascript.prettier" />
+    <property name="ts.external.directory.path" value="$PROJECT_DIR$/node_modules/typescript/lib" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/bending" />
+    </key>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="f19faea0-96ff-42e8-9f28-b240bb44ea83" name="Default Changelist" comment="" />
+      <created>1601016057769</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1601016057769</updated>
+      <workItem from="1601016058867" duration="526000" />
+      <workItem from="1601016927848" duration="13728000" />
+    </task>
+    <task id="LOCAL-00001" summary="6">
+      <created>1601027073554</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1601027073554</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="6" />
+    <option name="LAST_COMMIT_MESSAGE" value="6" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="821" y="256" key="CommitChangelistDialog2" timestamp="1601027071799">
+      <screen x="0" y="23" width="2560" height="1417" />
+    </state>
+    <state x="821" y="256" key="CommitChangelistDialog2/2560.294.1440.877/0.23.2560.1417@0.23.2560.1417" timestamp="1601027071799" />
+    <state x="679" y="283" key="SettingsEditor" timestamp="1601017019173">
+      <screen x="0" y="23" width="2560" height="1417" />
+    </state>
+    <state x="679" y="283" key="SettingsEditor/2560.294.1440.877/0.23.2560.1417@0.23.2560.1417" timestamp="1601017019173" />
+    <state x="780" y="408" key="Vcs.Push.Dialog.v2" timestamp="1601027073482">
+      <screen x="0" y="23" width="2560" height="1417" />
+    </state>
+    <state x="780" y="408" key="Vcs.Push.Dialog.v2/2560.294.1440.877/0.23.2560.1417@0.23.2560.1417" timestamp="1601027073482" />
+    <state x="861" y="341" width="838" height="1032" key="search.everywhere.popup" timestamp="1601034813924">
+      <screen x="0" y="23" width="2560" height="1417" />
+    </state>
+    <state x="861" y="341" width="838" height="1032" key="search.everywhere.popup/2560.294.1440.877/0.23.2560.1417@0.23.2560.1417" timestamp="1601034813924" />
+  </component>
+</project>
