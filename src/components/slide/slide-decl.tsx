@@ -15,6 +15,7 @@ export type SlideProps = {
   initialFragmentIndex?: number
   setFragmentManager?: (...args: any[]) => any
   layout?: 'default' | 'centered' | boolean | React.ComponentType<any>
+  children?: React.ReactNode
 } & BackgroundForProps
 
 class Slide extends Component<SlideProps> {
