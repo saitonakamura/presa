@@ -1,6 +1,6 @@
 {
   "name": "@saitonakamura/presa-blocks",
-  "version": "2.0.0-beta-4",
+  "version": "2.0.0-beta-5",
   "license": "MIT",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
@@ -8,9 +8,12 @@
     "clean": "rm -rf lib && rm -f *.tsbuildinfo"
   },
   "dependencies": {
-    "@saitonakamura/presa": "^2.0.0-beta-4"
+    "@saitonakamura/presa": "^2.0.0-beta-5"
   },
   "devDependencies": {
     "typescript": "^4.2.3"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }
