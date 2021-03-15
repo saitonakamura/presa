@@ -1,0 +1,9 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "outDir": "lib"
+  },
+  "exclude": ["lib", "node_modules"],
+  "include": ["./src/**/*"],
+  "references": [{ "path": "../presa" }, { "path": "../blocks" }]
+}
