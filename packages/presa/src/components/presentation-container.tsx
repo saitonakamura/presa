@@ -1,4 +1,4 @@
-import { Component } from 'react';
+import { Component } from 'react'
 import styled, { ThemeProvider, DefaultTheme } from 'styled-components'
 
 import GlobalBackground from './global-background'

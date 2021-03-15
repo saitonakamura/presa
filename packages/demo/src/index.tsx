@@ -1,4 +1,4 @@
-import * as React from 'react';
+import * as React from 'react'
 import ReactDOM from 'react-dom'
 import styled, { createGlobalStyle } from 'styled-components'
 // import CodeSurfer from 'code-surfer'
@@ -432,12 +432,17 @@ const rerenderApp = () => {
   ReactDOM.render(<PitchDeck />, container)
 }
 
-if (module.hot) {
-  module.hot.accept(rerenderApp)
-}
+rerenderApp()
 
-console.log('yess')
-document.addEventListener('DOMContentLoaded', () => {
-  rerenderApp()
-  console.log('yes')
-})
+// if (module.hot) {
+//   module.hot.accept(rerenderApp)
+// }
+
+// console.log('yess')
+// debugger
+// document.addEventListener('DOMContentLoaded', () => {
+//   debugger
+//   console.log('yesss')
+//   rerenderApp()
+//   console.log('yes')
+// })

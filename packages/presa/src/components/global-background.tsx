@@ -1,4 +1,4 @@
-import { Component } from 'react';
+import { useCallback, useEffect } from 'react'
 import { useTheme } from 'styled-components'
 import { ConnectedState } from './presentation-container'
 
@@ -8,31 +8,14 @@ type BodyBackgroundProps = {
 
 // Helper component. Update the body background
 // according to the `background` prop.
-class BodyBackground extends Component<BodyBackgroundProps> {
-  constructor(props: BodyBackgroundProps) {
-    super(props)
-    this.useBackground(props.background)
-  }
-
-  useBackground(prop: any) {
+const BodyBackground = (props: BodyBackgroundProps) => {
+  const changeBackground = useCallback((prop: string | undefined) => {
     const body = document.querySelector('body')
-    body && (body.style.background = prop)
-  }
+    body && (body.style.background = prop ?? '')
+  }, [])
 
-  componentWillReceiveProps(nextProps: BodyBackgroundProps) {
-    if (nextProps.background !== this.props.background) {
-      this.useBackground(nextProps.background)
-    }
-  }
-
-  shouldComponentUpdate() {
-    return false
-  }
-
-  // Don't render anything
-  render() {
-    return null
-  }
+  useEffect(() => changeBackground(props.background), [props.background])
+  return null
 }
 
 const GlobalBackground = (props: Pick<ConnectedState, 'isFullscreen'>) => {

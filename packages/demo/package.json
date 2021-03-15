@@ -5,7 +5,7 @@
   "license": "MIT",
   "scripts": {
     "start": "parcel index.html",
-    "clean": "exit 0"
+    "clean": "rm -rf .cache && rm -rf dist && rm -rf lib && rm -f *.tsbuildinfo"
   },
   "dependencies": {
     "@saitonakamura/presa": "^2.0.0-beta-4",

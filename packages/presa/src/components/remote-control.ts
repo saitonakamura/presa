@@ -1,4 +1,4 @@
-import { Component } from 'react';
+import { Component } from 'react'
 
 // Provides an adapter for presentation remotes.
 //

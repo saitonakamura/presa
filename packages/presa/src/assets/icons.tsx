@@ -35,7 +35,7 @@ export const Presa = (props: any) => (
       />
     </g>
   </svg>
-);
+)
 
 export const Navigation = (props: any) => (
   <svg {...props} width="20" height="20" xmlns="http://www.w3.org/2000/svg">

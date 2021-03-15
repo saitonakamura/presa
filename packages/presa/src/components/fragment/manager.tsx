@@ -1,4 +1,4 @@
-import { createContext, Component } from 'react';
+import { createContext, Component } from 'react'
 
 import { ALL_FRAGMENTS, NO_FRAGMENTS } from './constants'
 import nextIndex from './next-index'

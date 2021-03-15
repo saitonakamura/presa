@@ -1,5 +1,5 @@
-import { Component } from 'react';
-import * as React from 'react';
+import { Component } from 'react'
+import * as React from 'react'
 
 import Manager from './manager'
 import styled from 'styled-components'

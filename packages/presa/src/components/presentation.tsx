@@ -1,4 +1,4 @@
-import { Children, Component } from 'react';
+import { Children, Component } from 'react'
 import { DefaultTheme } from 'styled-components'
 
 import PresentationContainer, { SlideData } from './presentation-container'
@@ -31,7 +31,7 @@ class Presentation extends Component<Props> {
         name: slideElement.props.name,
         description: slideElement.props.description,
         element: slideElement,
-      }));
+      }))
   }
 
   render() {

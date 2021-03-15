@@ -1,7 +1,9 @@
 {
   "extends": "../../tsconfig.base.json",
   "compilerOptions": {
-    "outDir": "lib"
+    "outDir": "lib",
+    "jsx": "react-jsxdev",
+    "module": "ESNext"
   },
   "exclude": ["lib", "node_modules"],
   "include": ["./src/**/*"],
