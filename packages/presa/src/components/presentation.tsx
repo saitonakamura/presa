@@ -1,5 +1,5 @@
 import { Children, Component } from 'react'
-import { DefaultTheme } from 'styled-components'
+import { Theme } from '../theme'
 
 import PresentationContainer, { SlideData } from './presentation-container'
 import Slide from './slide/slide-decl'
@@ -8,7 +8,7 @@ type Props = {
   name?: string
   aspectRatio?: number
   baseWidth?: number
-  theme?: Partial<DefaultTheme>
+  theme?: Partial<Theme>
   tableOfContents?: boolean
   useFullscreenAPI?: boolean
 }

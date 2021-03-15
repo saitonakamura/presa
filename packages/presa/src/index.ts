@@ -32,4 +32,4 @@ export {
 
 export * from './components/slide/background'
 export * from './assets/icons'
-export { Theme } from './theme'
+export { Theme, SlideThemeType } from './theme'

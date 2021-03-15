@@ -41,7 +41,7 @@ class Fragment_ extends Component<OwnFragmentProps> {
 
 export type FragmentProps = Omit<OwnFragmentProps, 'manager' | 'behaviour'> &
   Partial<Pick<OwnFragmentProps, 'behaviour'>> & {
-    children: (index: number) => React.ReactNode
+    children: React.ReactNode | ((index: number) => React.ReactNode)
   }
 
 export const Fragment = (props: FragmentProps) => (
