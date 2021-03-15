@@ -90,6 +90,9 @@ export type ConnectedState = PresentationState & {
   showPrevSlide: ShowPrevSlide
 }
 
+const clamp = (min: number, val: number, max: number) =>
+  Math.max(Math.min(max, val), min)
+
 class Presentation extends Component<PresentationProps, PresentationState> {
   static defaultProps = {
     name: 'An awesome presentation',
@@ -104,9 +107,10 @@ class Presentation extends Component<PresentationProps, PresentationState> {
   constructor(props: PresentationProps) {
     super(props)
 
-    const currentIndex = Math.min(
-      props.slides.length,
-      extractIndexFromLocation()
+    const currentIndex = clamp(
+      0,
+      extractIndexFromLocation(),
+      props.slides.length - 1
     )
 
     this.state = {
